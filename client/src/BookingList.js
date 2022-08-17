@@ -1,11 +1,26 @@
-import { getBookings } from "./HotelService";
+import BookingItem from "./BookingItem"
 
-const BookingList = ({booking, removeBooking}) => {
 
+const BookingList = ({bookings, removeBooking, checkIn, checkOut}) => {
+
+    const bookingList = bookings.map((booking, index) => {
+        return <BookingItem 
+        key={booking._id}
+        id={index}
+        name={booking.name}
+        email={booking.email}
+        checkedin={booking.checked_in}
+        removeBooking={removeBooking}
+        checkIn={checkIn}
+        checkOut={checkOut}
+        />
+    })
     
     return(
         <>
-        <h1> </h1>
+        <ul>
+            {bookingList}
+        </ul>
         </>
     )
 }
